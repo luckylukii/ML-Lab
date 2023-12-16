@@ -1,0 +1,29 @@
+{
+    "PongAI": {
+        "checkpoints": [
+            {
+                "steps": 21824,
+                "file_path": "results\\name\\PongAI\\PongAI-21824.onnx",
+                "reward": null,
+                "creation_time": 1702545893.7253194,
+                "auxillary_file_paths": [
+                    "results\\name\\PongAI\\PongAI-21824.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 21824,
+            "file_path": "results\\name\\PongAI.onnx",
+            "reward": null,
+            "creation_time": 1702545893.7253194,
+            "auxillary_file_paths": [
+                "results\\name\\PongAI\\PongAI-21824.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.28.0",
+        "torch_version": "1.13.1+cpu"
+    }
+}

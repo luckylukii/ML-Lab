@@ -1,0 +1,65 @@
+{
+    "GetToTarget": {
+        "checkpoints": [
+            {
+                "steps": 2499944,
+                "file_path": "results\\Test1\\GetToTarget\\GetToTarget-2499944.onnx",
+                "reward": null,
+                "creation_time": 1702664192.477505,
+                "auxillary_file_paths": [
+                    "results\\Test1\\GetToTarget\\GetToTarget-2499944.pt"
+                ]
+            },
+            {
+                "steps": 2999968,
+                "file_path": "results\\Test1\\GetToTarget\\GetToTarget-2999968.onnx",
+                "reward": null,
+                "creation_time": 1702664941.4725795,
+                "auxillary_file_paths": [
+                    "results\\Test1\\GetToTarget\\GetToTarget-2999968.pt"
+                ]
+            },
+            {
+                "steps": 3499988,
+                "file_path": "results\\Test1\\GetToTarget\\GetToTarget-3499988.onnx",
+                "reward": null,
+                "creation_time": 1702665725.4779654,
+                "auxillary_file_paths": [
+                    "results\\Test1\\GetToTarget\\GetToTarget-3499988.pt"
+                ]
+            },
+            {
+                "steps": 3999982,
+                "file_path": "results\\Test1\\GetToTarget\\GetToTarget-3999982.onnx",
+                "reward": null,
+                "creation_time": 1702666644.1174858,
+                "auxillary_file_paths": [
+                    "results\\Test1\\GetToTarget\\GetToTarget-3999982.pt"
+                ]
+            },
+            {
+                "steps": 4490845,
+                "file_path": "results\\Test1\\GetToTarget\\GetToTarget-4490845.onnx",
+                "reward": null,
+                "creation_time": 1702667492.2049243,
+                "auxillary_file_paths": [
+                    "results\\Test1\\GetToTarget\\GetToTarget-4490845.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 4490845,
+            "file_path": "results\\Test1\\GetToTarget.onnx",
+            "reward": null,
+            "creation_time": 1702667492.2049243,
+            "auxillary_file_paths": [
+                "results\\Test1\\GetToTarget\\GetToTarget-4490845.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.28.0",
+        "torch_version": "1.13.1+cpu"
+    }
+}

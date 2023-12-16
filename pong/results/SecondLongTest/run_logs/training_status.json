@@ -1,0 +1,29 @@
+{
+    "PongAI": {
+        "checkpoints": [
+            {
+                "steps": 74392,
+                "file_path": "results\\SecondLongTest\\PongAI\\PongAI-74392.onnx",
+                "reward": null,
+                "creation_time": 1702550104.9077165,
+                "auxillary_file_paths": [
+                    "results\\SecondLongTest\\PongAI\\PongAI-74392.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 74392,
+            "file_path": "results\\SecondLongTest\\PongAI.onnx",
+            "reward": null,
+            "creation_time": 1702550104.9077165,
+            "auxillary_file_paths": [
+                "results\\SecondLongTest\\PongAI\\PongAI-74392.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.28.0",
+        "torch_version": "1.13.1+cpu"
+    }
+}
