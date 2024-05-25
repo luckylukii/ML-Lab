@@ -277,10 +277,10 @@ MonoBehaviour:
   m_Padding:
     m_Left: 0
     m_Right: 0
-    m_Top: 110
-    m_Bottom: 110
+    m_Top: 0
+    m_Bottom: 0
   m_ChildAlignment: 1
-  m_Spacing: 200
+  m_Spacing: 0
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 1
@@ -302,7 +302,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   laneParent: {fileID: 899608928}
   lanePrefab: {fileID: 1678077010750252531, guid: 5fd5e659245c09e4b80576402570ac2b, type: 3}
-  carPrefab: {fileID: 9164982349955999162, guid: 2939f781e3af134479f4949274e6415e, type: 3}
+  carPrefab: {fileID: 6345160260659628203, guid: 2939f781e3af134479f4949274e6415e, type: 3}
   carParent: {fileID: 352244958}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

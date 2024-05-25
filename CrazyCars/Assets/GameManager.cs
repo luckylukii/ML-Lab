@@ -3,9 +3,11 @@ using TMPro;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour {
+    [SerializeField] private CarControllerAgent agent;
     private const float SPAWN_DELAY = 1f;
-    
-    [SerializeField] private RectTransform player;
+
+    [SerializeField] private int numLanes = 5;
+    [Space, SerializeField] private RectTransform player;
     [SerializeField] private TMP_Text scoreText;
     public static float[] LanePositions;
 
@@ -17,7 +19,9 @@ public class GameManager : MonoBehaviour {
     public int score = 0;
 
     private async void Start() {
-        LanePositions = await RoadManager.Instance.RenderRoad(5);
+        RoadManager.Instance.agent = agent;
+        
+        LanePositions = await RoadManager.Instance.RenderRoad(numLanes);
         Debug.Log(string.Join(", ", LanePositions));
         _currentPosition = LanePositions.Length / 2;
 
@@ -32,6 +36,7 @@ public class GameManager : MonoBehaviour {
         _spawnTimer -= Time.deltaTime;
         if (_spawnTimer <= 0 && RoadManager.Instance != null) {
             SpawnCars(40f, score + 400);
+            agent.Reward(score);
             _spawnTimer = SPAWN_DELAY;
             score += 10;
             scoreText.text = $"Score: {score}";

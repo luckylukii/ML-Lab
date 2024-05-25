@@ -32,4 +32,7 @@ public class CarControllerAgent : Agent {
         RoadManager.Instance.ResetMl();
         manager.ResetScore();
     }
+
+    public void OnLost() => EndEpisode();
+    public void Reward(float r) => AddReward(r);
 }

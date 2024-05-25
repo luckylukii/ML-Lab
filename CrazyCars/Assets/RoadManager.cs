@@ -1,11 +1,12 @@
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RoadManager : MonoBehaviour {
+    [HideInInspector] public CarControllerAgent agent;
     public static RoadManager Instance;
-    private List<RectTransform> cars = new();
+    private List<EnemyCar> cars = new();
 
     private void Awake() {
         if (Instance != null && Instance != this) Destroy(this);
@@ -14,7 +15,7 @@ public class RoadManager : MonoBehaviour {
 
     [SerializeField] private Transform laneParent;
     [SerializeField] private GameObject lanePrefab;
-    [Space, SerializeField] private RectTransform carPrefab;
+    [Space, SerializeField] private EnemyCar carPrefab;
     [SerializeField] private Transform carParent;
 
     /// <summary>
@@ -23,12 +24,24 @@ public class RoadManager : MonoBehaviour {
     /// <param name="lanes">The number of lanes the road should have</param>
     /// <returns>An array of the positions of the lanes</returns>
     public async Task<float[]> RenderRoad(int lanes) {
+        // Set appropriate spacing (size) of the lanes
+        // TODO: find formula
+        GetComponent<VerticalLayoutGroup>().spacing = lanes switch {
+            > 7 => 120,
+            7 => 135,
+            6 => 160,
+            5 => 200,
+            4 => 225,
+            3 => 325,
+            _ => 0
+        };
+        
         // Destroy children
         while (laneParent.childCount > 0) {
             DestroyImmediate(laneParent.GetChild(0));
         }
 
-        for (int i = 0; i < lanes; i++) {
+        for (int i = 0; i <= lanes; i++) {
             Instantiate(lanePrefab, laneParent);
         }
 
@@ -37,39 +50,34 @@ public class RoadManager : MonoBehaviour {
 
         float[] positions = new float[lanes];
         for (int i = 0; i < positions.Length; i++) {
-            positions[i] = laneParent.GetChild(i).position.y;
+            float upper = laneParent.GetChild(i).position.y;
+            float lower = laneParent.GetChild(i + 1).position.y;
+            positions[i] = Mathf.Lerp(lower, upper, 0.5f);
         }
 
         return positions;
     }
 
-    public async void SpawnCar(float yPos, float speed) {
-        RectTransform car = Instantiate(carPrefab, carParent);
+    /// <summary>
+    /// Spawn a car on the right edge of the screen
+    /// </summary>
+    /// <param name="yPos">The Y-Position of the spawned car (will never change)</param>
+    /// <param name="speed">The speed (in Units/second) with which the car travels towards the left edge of the screen</param>
+    public void SpawnCar(float yPos, float speed) {
+        EnemyCar car = Instantiate(carPrefab, carParent);
         cars.Add(car);
-        car.anchoredPosition = new Vector2(Screen.width / 2, yPos);
-        while (car.position.x > -Screen.width / 2) {
-            car.position = new Vector3(Mathf.MoveTowards(car.position.x, -Screen.width, speed * Time.deltaTime), yPos);
+        car.Init(GameObject.FindWithTag("Player"), yPos, speed);
 
-
-            Vector2 player = GameObject.FindWithTag("Player").transform.position;
-            if (Math.Abs(player.x - car.position.x) <= 50 && player.y == car.position.y) {
-                Debug.Log("Lost");
-                break;
-            }
-
-
-            await Task.Yield();
-        }
-
-        cars.Remove(car);
-        Destroy(car.gameObject);
+        car.OnCollided += () => {
+            agent.OnLost();
+        };
     }
 
     public void ResetMl() {
-        foreach (RectTransform car in cars) {
+        foreach (EnemyCar car in cars) {
             Destroy(car.gameObject);
         }
 
-        cars = new();
+        cars = new List<EnemyCar>();
     }
 }

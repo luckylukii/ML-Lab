@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 9164982349955999162}
   - component: {fileID: 984401251468347821}
   - component: {fileID: 397520866813887968}
+  - component: {fileID: 6345160260659628203}
   m_Layer: 5
   m_Name: Car
   m_TagString: Enemy
@@ -65,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1b94b0f7ed860784b9176ea3b99e9c9f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 517704b28835adf4b902caa2cddf9911, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -75,3 +76,17 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &6345160260659628203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2402149950053857681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3ddf08f4bc84081bf3bed61878b8309, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skins:
+  - {fileID: 21300000, guid: 517704b28835adf4b902caa2cddf9911, type: 3}
