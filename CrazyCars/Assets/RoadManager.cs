@@ -46,7 +46,7 @@ public class RoadManager : MonoBehaviour {
         }
 
         // Wait for the children to be sorted by the LayoutGroup
-        await Task.Delay(50);
+        await Task.Delay(500);
 
         float[] positions = new float[lanes];
         for (int i = 0; i < positions.Length; i++) {

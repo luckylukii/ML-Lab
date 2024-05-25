@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour {
 
     private int _currentPosition;
 
-    private bool _initialized = false;
+    public static bool Initialized { get; private set; } = false;
 
     private float _spawnTimer = 0f;
     public int score = 0;
@@ -25,11 +25,11 @@ public class GameManager : MonoBehaviour {
         Debug.Log(string.Join(", ", LanePositions));
         _currentPosition = LanePositions.Length / 2;
 
-        _initialized = true;
+        Initialized = true;
     }
 
     private async void Update() {
-        while (!_initialized) {
+        while (!Initialized) {
             await Task.Yield();
         }
 

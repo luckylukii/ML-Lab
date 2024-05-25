@@ -11,6 +11,8 @@ public class CarControllerAgent : Agent {
     }
 
     public override void OnActionReceived(ActionBuffers actions) {
+        if (!GameManager.Initialized) return;
+        
         ActionSegment<int> discreteActions = actions.DiscreteActions;
         int input = discreteActions[0];
         
